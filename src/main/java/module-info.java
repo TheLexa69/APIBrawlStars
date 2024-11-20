@@ -3,6 +3,8 @@ module com.example.apibrawlstars {
     requires javafx.fxml;
 
     requires org.controlsfx.controls;
+    requires jdk.unsupported.desktop;
+    requires java.sql;
 
     opens com.example.apibrawlstars to javafx.fxml;
     exports com.example.apibrawlstars;
