@@ -16,7 +16,7 @@ public class SQLCommands {
     }
 
     public boolean registrarUsuario(String nombre, String passwordHash) {
-        String sql = "INSERT INTO Users (name, password, activado) VALUES (?, ?, FALSE)";
+        String sql = "INSERT INTO Users (name, password, is_active) VALUES (?, ?, FALSE)";
         try (Connection conn = conexion.conectarMySQL();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, nombre);
@@ -30,7 +30,7 @@ public class SQLCommands {
 
     public boolean activarUsuario(String nombre, String codigo) {
         // Suponiendo que tienes una columna `confirmation_code` en tu tabla
-        String sql = "UPDATE Users SET activado = TRUE WHERE name = ? AND confirmation_code = ?";
+        String sql = "UPDATE Users SET is_active = TRUE WHERE name = ? AND confirmation_code = ?";
         try (Connection conn = conexion.conectarMySQL();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, nombre);
