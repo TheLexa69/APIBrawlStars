@@ -49,6 +49,7 @@ public class ControllerRegisterModal {
             String hashedPassword = ControllerCredentials.hashPassword(contrasena);
             if (sqlCommands.registrarUsuario(nombre, hashedPassword)) {
                 confirmationCode = generateConfirmationCode();
+                sqlCommands.updateCodigoUsuario(confirmationCode, nombre, hashedPassword);//ACTUALIZAMOS EN LA BDD EL CODIGO PARA POSTERIORMENTE HACER LA LECTURA
                 showConfirmationModal();
             } else {
                 showAlert("Error", "No se pudo registrar el usuario. Intente nuevamente.");

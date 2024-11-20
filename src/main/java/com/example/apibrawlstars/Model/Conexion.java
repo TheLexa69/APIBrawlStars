@@ -11,7 +11,7 @@ public class Conexion {
     private final String PORT = "3306";
     private final String URL = "jdbc:mysql://" + HOSTNAME + ":" + PORT + "/" + DATABASE;
     private final String USERNAME = "root";
-    private final String PASSWORD = "root";
+    private final String PASSWORD = "";
 
 
 

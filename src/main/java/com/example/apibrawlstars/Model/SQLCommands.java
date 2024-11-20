@@ -28,6 +28,21 @@ public class SQLCommands {
         }
     }
 
+    public boolean updateCodigoUsuario(String codigo, String name, String hashedPassword) {
+        String sql = "UPDATE Users SET confirmation_code = ? WHERE name = ? AND password = ?";
+        try (Connection conn = conexion.conectarMySQL();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, codigo);
+            pstmt.setString(2, name);
+            pstmt.setString(3, hashedPassword);
+            return pstmt.executeUpdate() > 0; // Retorna true si se actualizó correctamente
+        } catch (SQLException e) {
+            System.out.println("Error no SQLCommands updateCodigoUsuario()" + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     public boolean activarUsuario(String nombre, String codigo) {
         // Suponiendo que tienes una columna `confirmation_code` en tu tabla
         String sql = "UPDATE Users SET is_active = TRUE WHERE name = ? AND confirmation_code = ?";
@@ -37,6 +52,7 @@ public class SQLCommands {
             pstmt.setString(2, codigo);
             return pstmt.executeUpdate() > 0; // Retorna true si se activó correctamente
         } catch (SQLException e) {
+            System.out.println("Error no SQLCommands activarUsuario()" + e.getMessage());
             e.printStackTrace();
             return false;
         }
