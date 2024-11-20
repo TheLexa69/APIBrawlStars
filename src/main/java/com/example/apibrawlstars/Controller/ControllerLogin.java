@@ -13,6 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import com.example.apibrawlstars.Main;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import jdk.swing.interop.SwingInterOpUtils;
 
@@ -47,7 +48,7 @@ public class ControllerLogin {
 
         if (sqlCommands.authenticateUser(username, password)) {
             showAlert("Inicio de sesión exitoso", "Bienvenido, " + username + "!");
-            // Aquí puedes redirigir a la siguiente pantalla
+            //Falta redirigir al inicio logueado
         } else {
             showAlert("Error de inicio de sesión", "Usuario o contraseña incorrectos.");
         }
@@ -56,13 +57,18 @@ public class ControllerLogin {
     @FXML
     void onBtnClickUsuarioRegistrarse(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/apibrawlstars/Views/RegisterModal.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/apibrawlstars/View/RegisterModal.fxml"));
             Parent root = loader.load();
-
             Stage stage = new Stage();
             stage.setTitle("Registro de Usuario");
             stage.setScene(new Scene(root));
-            stage.show();
+
+            // Hacer que la ventana siempre esté encima
+            stage.setAlwaysOnTop(true);
+
+            // Hacer que la ventana sea modal
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.showAndWait(); // Bloquea la interacción con otras ventanas
         } catch (IOException e) {
             e.printStackTrace();
             showAlert("Error", "No se pudo abrir el formulario de registro.");
