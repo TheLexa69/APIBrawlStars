@@ -48,7 +48,7 @@ public class ControllerLogin {
 
         if (sqlCommands.authenticateUser(username, password)) {
             showAlert("Inicio de sesión exitoso", "Bienvenido, " + username + "!");
-            //Falta redirigir al inicio logueado
+            redirectToIndex();
         } else {
             showAlert("Error de inicio de sesión", "Usuario o contraseña incorrectos.");
         }
@@ -72,6 +72,24 @@ public class ControllerLogin {
         } catch (IOException e) {
             e.printStackTrace();
             showAlert("Error", "No se pudo abrir el formulario de registro.");
+        }
+    }
+
+    private void redirectToIndex() {
+        try {
+            // Cargar el archivo FXML de la vista del índice
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/apibrawlstars/View/ViewIndex.fxml"));
+            Parent root = loader.load();
+
+            // Obtener el Stage actual desde cualquier componente
+            Stage currentStage = (Stage) btnUsuarioLogin.getScene().getWindow();
+
+            // Cambiar la escena del Stage actual
+            currentStage.setScene(new Scene(root));
+            currentStage.setTitle("Pantalla Principal");
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert("Error", "No se pudo cargar la pantalla principal.");
         }
     }
 
