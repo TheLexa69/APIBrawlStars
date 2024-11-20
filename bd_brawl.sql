@@ -93,14 +93,14 @@ CREATE TABLE Battles (
                          PRIMARY KEY (battleTime, playerTag)
 );
 
-CREATE TABLE UsersAPI (
-                          id INT AUTO_INCREMENT PRIMARY KEY,
-                          name VARCHAR(20) NOT NULL,
-                          password VARCHAR(512) NOT NULL,
-                          role VARCHAR(30) NOT NULL DEFAULT 'user',
-                          activado BOOLEAN DEFAULT FALSE,
-                          creationDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                          lastLogin TIMESTAMP NULL
+CREATE TABLE Users (
+                       id INT AUTO_INCREMENT PRIMARY KEY,        -- Identificador único para cada usuario
+                       name VARCHAR(255) NOT NULL UNIQUE,        -- Nombre del usuario (único)
+                       password VARCHAR(255) NOT NULL,           -- Contraseña hash del usuario
+                       confirmation_code VARCHAR(255),            -- Código de confirmación enviado al usuario
+                       is_active BOOLEAN DEFAULT FALSE,           -- Estado de activación del usuario
+                       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Fecha de creación del registro
+                       updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP -- Fecha de última actualización
 );
 
 
