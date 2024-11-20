@@ -41,24 +41,17 @@ public class ControllerLogin {
     @FXML
     public void initialize() {
         try {
-            // Ruta de la imagen que quieres cargar
-            String imagen = "/com/example/apibrawlstars/View/Images/Brawl-Stars-logo.png";  // Cambia esta ruta según tu imagen
-
-            // Imprime la ruta para asegurarnos de que es correcta
-            System.out.println("Ruta de la imagen: " + imagen);
-
-            // Intenta cargar la imagen desde el directorio de recursos
+            String imagen = "/com/example/apibrawlstars/View/Images/Brawl_Stars_Update_Hub_Featured_45FCMOZ.png";  // Cambia esta ruta según tu imagen
             var imageStream = Main.class.getResourceAsStream(imagen);
             if (imageStream != null) {
-                System.out.println("Imagen encontrada, cargando...");
                 Image image = new Image(imageStream);
-                imgLogoBrawl.setImage(image);  // Asigna la imagen al ImageView
+                imgBackgroundLogin.setImage(image);
             } else {
                 System.out.println("No se encontró la imagen en la ruta: " + imagen);
             }
         } catch (Exception e) {
             System.out.println("Error en ControllerLogin.java: " + e.getMessage());
-            e.printStackTrace();  // Para depurar el error de manera más detallada
+            e.printStackTrace();
         }
     }
 }
