@@ -9,10 +9,8 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="337.0" prefWidth="596.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.apibrawlstars.Controller.ControllerLogin">
    <children>
-      <ImageView fx:id="imgBackgroundLogin" fitHeight="337.0" fitWidth="616.0" layoutX="-2.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@Images/Brawl_Stars_Update_Hub_Featured_45FCMOZ.png" />
-         </image></ImageView>
+      <ImageView fx:id="imgBackgroundLogin" fitHeight="337.0" fitWidth="616.0" layoutX="-2.0" pickOnBounds="true" preserveRatio="true"/>
+      <ImageView fx:id="imgLogoBrawl" fitHeight="35.0" fitWidth="60.0" layoutX="-2.0" pickOnBounds="true" preserveRatio="true"/>
       <TextField fx:id="txtUsuarioLogin" layoutX="194.0" layoutY="233.0" prefHeight="35.0" prefWidth="209.0" promptText="usuario" />
       <PasswordField fx:id="txtUsuarioPwd" layoutX="194.0" layoutY="293.0" prefHeight="35.0" prefWidth="209.0" promptText="contraseña" />
       <Button fx:id="btnUsuarioRegistrarse" layoutX="44.0" layoutY="268.0" mnemonicParsing="false" onAction="#onBtnClickUsuarioRegistrarse" prefHeight="25.0" prefWidth="82.0" text="Registrarse" />
