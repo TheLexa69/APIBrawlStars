@@ -1,6 +1,7 @@
 package com.example.apibrawlstars.Model;
 
 import com.example.apibrawlstars.Controller.ControllerCredentials;
+import javafx.scene.control.Alert;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,6 +24,16 @@ public class SQLCommands {
             pstmt.setString(2, passwordHash);
             return pstmt.executeUpdate() > 0; // Retorna true si se registró correctamente
         } catch (SQLException e) {
+            /*if (e.getErrorCode() == 1062) { // Código de error para entrada duplicada
+                System.out.println("El nombre de usuario ya existe. Por favor, elija otro.");
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error de Registro");
+                alert.setHeaderText(null);
+                alert.setContentText("El nombre de usuario ya existe. Por favor, elija otro.");
+                alert.showAndWait();
+            } else {
+                System.out.println("Error en SQLCommands registrarUsuario(): " + e.getMessage());
+            }*/
             System.out.println("Error no SQLCommands registrarUsuario()" + e.getMessage());
             return false;
         }

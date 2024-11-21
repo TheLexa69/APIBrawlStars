@@ -138,8 +138,41 @@ alter table Brawlers
 alter table Gears
     add FOREIGN KEY (playerTag) REFERENCES Players (tag);
 
-select *
-from usersapi;
+INSERT INTO Players (
+    tag,
+    name,
+    nameColor,
+    iconId,
+    trophies,
+    highestTrophies,
+    expLevel,
+    expPoints,
+    isQualifiedFromChampChallenge,
+    threeVsThreeVictories,
+    soloVictories,
+    duoVictories,
+    bestRoboRumbleTime,
+    bestTimeAsBigBrawler,
+    clubTag
+) VALUES (
+             'defaultTag',              -- Tag por defecto
+             'Nombre del Jugador',      -- Nombre del jugador
+             'Color',                   -- Color del nombre (opcional)
+             1,                         -- ID del ícono (opcional)
+             0,                         -- Trofeos iniciales
+             0,                         -- Trofeos más altos
+             1,                         -- Nivel de experiencia
+             0,                         -- Puntos de experiencia
+             FALSE,                     -- Clasificado para el desafío de campeones
+             0,                         -- Victorias 3v3
+             0,                         -- Victorias en solitario
+             0,                         -- Victorias en dúo
+             0,                         -- Mejor tiempo en Robo Rumble
+             0,                         -- Mejor tiempo como Big Brawler
+             NULL                       -- Club tag (opcional)
+         );
+
+select * from Users;
 /** SELECT b.name, b.trophies 
 FROM Brawlers b 
 JOIN Players p ON b.playerTag = p.tag 

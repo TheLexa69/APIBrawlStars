@@ -1,5 +1,6 @@
 package com.example.apibrawlstars;
 
+import com.example.apibrawlstars.Model.DataApi;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -16,9 +17,16 @@ public class Main extends Application {
         stage.setScene(scene);
         stage.resizableProperty().setValue(Boolean.FALSE);
         stage.show();
+
+        DataApi dataApi = new DataApi();
+        //dataApi.fetchAndInsertBrawlers();
+        dataApi.fetchAndInsertEvents();
     }
 
     public static void main(String[] args) {
+
         launch();
+
+
     }
 }
