@@ -20,13 +20,12 @@ public class Main extends Application {
 
         DataApi dataApi = new DataApi();
         //dataApi.fetchAndInsertBrawlers();
-        dataApi.fetchAndInsertEvents();
+        //dataApi.fetchAndInsertEvents();
     }
 
     public static void main(String[] args) {
 
         launch();
-
 
     }
 }
