@@ -1,5 +1,10 @@
 package com.example.apibrawlstars;
 
+<<<<<<< Updated upstream
+=======
+import com.example.apibrawlstars.Model.DataApi;
+import com.example.apibrawlstars.Model.SQLCommands;
+>>>>>>> Stashed changes
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -16,6 +21,18 @@ public class Main extends Application {
         stage.setScene(scene);
         stage.resizableProperty().setValue(Boolean.FALSE);
         stage.show();
+<<<<<<< Updated upstream
+=======
+
+        DataApi dataApi = new DataApi();
+        //dataApi.fetchAndInsertBrawlers();
+        dataApi.fetchAndInsertEvents();
+        SQLCommands commands = new SQLCommands();
+        commands.getUsers();
+        commands.deleteUserByName();
+        commands.insertUser();
+        commands.getUsers();
+>>>>>>> Stashed changes
     }
 
     public static void main(String[] args) {

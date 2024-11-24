@@ -8,6 +8,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import com.example.apibrawlstars.Main;
+<<<<<<< Updated upstream
+=======
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+//import jdk.swing.interop.SwingInterOpUtils;
+
+import java.io.IOException;
+>>>>>>> Stashed changes
 
 public class ControllerLogin {
 
@@ -54,4 +62,36 @@ public class ControllerLogin {
             e.printStackTrace();
         }
     }
+<<<<<<< Updated upstream
 }
+=======
+
+    private void redirectToIndex() {
+        try {
+            // Cargar el archivo FXML de la vista del índice
+            //FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/apibrawlstars/View/ViewIndex.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("com/example/apibrawlstars/View/SceneAdmin.fxml"));
+
+            Parent root = loader.load();
+
+            // Obtener el Stage actual desde cualquier componente
+            Stage currentStage = (Stage) btnUsuarioLogin.getScene().getWindow();
+
+            // Cambiar la escena del Stage actual
+            currentStage.setScene(new Scene(root));
+            currentStage.setTitle("Pantalla Principal");
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert("Error", "No se pudo cargar la pantalla principal.");
+        }
+    }
+
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+}
+>>>>>>> Stashed changes
