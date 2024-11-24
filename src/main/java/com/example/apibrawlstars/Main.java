@@ -1,6 +1,7 @@
 package com.example.apibrawlstars;
 
 import com.example.apibrawlstars.Model.DataApi;
+import com.example.apibrawlstars.Model.SQLCommands;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -21,10 +22,15 @@ public class Main extends Application {
         DataApi dataApi = new DataApi();
         //dataApi.fetchAndInsertBrawlers();
         dataApi.fetchAndInsertEvents();
+
     }
 
     public static void main(String[] args) {
-
+        SQLCommands cm = new SQLCommands();
+        cm.getUsers();
+        //cm.insertUser();
+        cm.deleteUserByName();
+        cm.getUsers();
         launch();
 
 

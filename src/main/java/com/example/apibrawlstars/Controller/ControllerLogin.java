@@ -15,7 +15,7 @@ import javafx.scene.image.ImageView;
 import com.example.apibrawlstars.Main;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import jdk.swing.interop.SwingInterOpUtils;
+//import jdk.swing.interop.SwingInterOpUtils;
 
 import java.io.IOException;
 
