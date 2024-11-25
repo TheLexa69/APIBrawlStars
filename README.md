@@ -4,7 +4,12 @@ Esta es una aplicación JavaFX que interactúa con la API de Brawl Stars para ob
 
 ## Características
 
+<<<<<<< Updated upstream
 - Inicio de sesión y registro de usuarios
+=======
+- Inicio de sesión y registro de usuarios con encriptación de contraseñas (SHA-256)
+- Codigo de verificación de usuario 
+>>>>>>> Stashed changes
 - Obtener y mostrar información de jugadores
 - Obtener y mostrar información de clubes
 - Obtener y mostrar registros de batallas
@@ -33,11 +38,19 @@ Esta es una aplicación JavaFX que interactúa con la API de Brawl Stars para ob
     ```
 
 2. Configura la base de datos MySQL:
+<<<<<<< Updated upstream
     - Crea una base de datos llamada `brawlstars`.
     - Ejecuta el script SQL `bd_brawl.sql` para crear las tablas necesarias e insertar datos iniciales.
 
 3. Configura la conexión a la base de datos:
     - Actualiza los detalles de la conexión a la base de datos en la clase `SQLCommands`.
+=======
+   - Crea una base de datos llamada `brawlstars`.
+   - Ejecuta el script SQL `bd_brawl.sql` para crear las tablas necesarias e insertar datos iniciales.
+
+3. Configura la conexión a la base de datos:
+   - Actualiza los detalles de la conexión a la base de datos en la clase `SQLCommands`.
+>>>>>>> Stashed changes
 
 4. Construye el proyecto usando Maven:
     ```sh
