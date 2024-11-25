@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="420.0" prefWidth="550.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23" fx:controller="com.example.apibrawlstars.Controller.BattleLogDialogController">
+    <children>
+        <TableView fx:id="battleLogTable" AnchorPane.bottomAnchor="10" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10" AnchorPane.topAnchor="10">
+            <columns>
+                <TableColumn fx:id="colBattleTime" prefWidth="142.0" text="Battle Time" />
+                <TableColumn fx:id="colMode" prefWidth="68.0" text="Mode" />
+                <TableColumn fx:id="colTrophyChange" prefWidth="98.0" text="Trophy Change" />
+                <TableColumn fx:id="colResult" prefWidth="126.0" text="Result" />
+                <TableColumn fx:id="colDuration" prefWidth="95.0" text="Duration" />
+            </columns>
+        </TableView>
+    </children>
+</AnchorPane>

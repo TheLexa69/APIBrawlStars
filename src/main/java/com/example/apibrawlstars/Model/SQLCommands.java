@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SQLCommands {
 
@@ -86,4 +88,137 @@ public class SQLCommands {
         }
         return false; // Usuario no encontrado o contraseña incorrecta
     }
+
+    public boolean existsPlayer(String playerTag) {
+        if (!playerTag.startsWith("#")) {
+            playerTag = "#" + playerTag;
+        }
+        String sql = "SELECT * FROM Players WHERE tag = ?";
+        try (Connection conn = conexion.conectarMySQL();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, playerTag);
+            ResultSet rs = pstmt.executeQuery();
+            return rs.next();
+        } catch (SQLException e) {
+            System.out.println("Error no SQLCommands existsPlayer()" + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public Players getPlayer(String playerTag) {
+        if (!playerTag.startsWith("#")) {
+            playerTag = "#" + playerTag;
+        }
+
+        String sql = "SELECT * FROM Players WHERE tag = ?";
+        try (Connection conn = conexion.conectarMySQL();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, playerTag);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return new Players(
+                        rs.getString("tag"),
+                        rs.getString("name"),
+                        rs.getInt("trophies"),
+                        rs.getInt("highestTrophies"),
+                        rs.getInt("soloVictories"),
+                        rs.getInt("duoVictories"),
+                        rs.getString("clubTag"),
+                        rs.getInt("threeVsThreeVictories")
+                );
+            }
+        } catch (SQLException e) {
+            System.out.println("Error no SQLCommands getPlayer()" + e.getMessage());
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public Clubs getClub(String playerTag) {
+        if (!playerTag.startsWith("#")) {
+            playerTag = "#" + playerTag;
+        }
+
+        String sql = "SELECT * FROM clubs WHERE tag IN (SELECT clubTag FROM players WHERE tag = ?)";
+        try (Connection conn = conexion.conectarMySQL();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, playerTag);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return new Clubs(
+                        rs.getString("tag"),
+                        rs.getString("nombre"),
+                        rs.getString("descripcion"),
+                        rs.getString("tipo"),
+                        rs.getInt("badgeId"),
+                        rs.getInt("requiredTrophies"),
+                        rs.getInt("trophies")
+                );
+            }
+        } catch (SQLException e) {
+            System.out.println("Error en SQLCommands getClub(): " + e.getMessage());
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /*public Battles getBattles(String playerTag) {
+        if (!playerTag.startsWith("#")) {
+            playerTag = "#" + playerTag;
+        }
+
+        String sql = "SELECT * FROM battles WHERE playerTag = ?";
+
+        try (Connection conn = conexion.conectarMySQL();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, playerTag);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return new Battles(
+                        rs.getString("battleTime"),
+                        rs.getString("playerTag"),
+                        rs.getString("battleMode"),
+                        rs.getInt("trophyChange"),
+                        rs.getString("result"),
+                        rs.getInt("duration")
+                );
+            }
+        } catch (SQLException e) {
+            System.out.println("Error en SQLCommands getBattles(): " + e.getMessage());
+            e.printStackTrace();
+        }
+        return null;
+    }*/
+
+    public List<Battles> getBattles(String playerTag) {
+        List<Battles> battles = new ArrayList<>();
+
+        if (!playerTag.startsWith("#")) {
+            playerTag = "#" + playerTag;
+        }
+
+        String query = "SELECT battleTime, battleMode, trophyChange, result, duration FROM Battles WHERE playerTag = ?";
+
+        try (Connection conn = conexion.conectarMySQL();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setString(1, playerTag);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                battles.add(new Battles(
+                        rs.getString("battleTime"),
+                        rs.getString("battleMode"),
+                        rs.getInt("trophyChange"),
+                        rs.getString("result"),
+                        rs.getInt("duration")
+                ));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return battles;
+    }
+
 }

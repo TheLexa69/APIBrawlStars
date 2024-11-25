@@ -21,6 +21,8 @@ public class Main extends Application {
         DataApi dataApi = new DataApi();
         //dataApi.fetchAndInsertBrawlers();
         //dataApi.fetchAndInsertEvents();
+        //dataApi.fetchAndInsertRankings();
+        //dataApi.fetchAndInsertPlayers
     }
 
     public static void main(String[] args) {

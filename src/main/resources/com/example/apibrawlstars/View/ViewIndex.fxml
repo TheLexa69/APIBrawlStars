@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
@@ -10,39 +13,60 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane fx:id="pnlLogin" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="400.0" minWidth="600.0" prefHeight="680.0" prefWidth="1071.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.apibrawlstars.Controller.ControllerViewIndex">
-   <children>
+    <stylesheets>
+        <URL value="@./styles.css" />
+    </stylesheets>
+    <children>
       <MenuBar prefHeight="25.0" prefWidth="915.0">
         <menus>
-          <Menu fx:id="idJugadoresIndex" mnemonicParsing="false" text="Jugadores" />
-          <Menu mnemonicParsing="false" text="Clubs" />
-            <Menu mnemonicParsing="false" text="Brawlers" />
-            <Menu mnemonicParsing="false" text="Eventos">
+          <Menu fx:id="idJugadoresIndex" mnemonicParsing="false" onAction="#onBtnClickJugadores" text="Jugadores" />
+          <Menu fx:id="idClubsIndex" mnemonicParsing="false" onAction="#onBtnClickClubs" text="Clubs" />
+            <Menu fx:id="idBrawlersIndex" mnemonicParsing="false" onAction="#onBtnClickBrawlers" text="Brawlers" />
+            <Menu fx:id="idEventosIndex" mnemonicParsing="false" onAction="#onBtnClickEventos" text="Eventos">
                <items>
                   <MenuItem mnemonicParsing="false" text="About" />
                </items>
             </Menu>
         </menus>
       </MenuBar>
-      <MenuBar layoutX="905.0" prefHeight="25.0" prefWidth="166.0">
+      <MenuBar layoutX="858.0" prefHeight="32.0" prefWidth="213.0">
         <menus>
           <Menu mnemonicParsing="false" text="Exportar" />
             <Menu mnemonicParsing="false" text="Info" />
-          <Menu mnemonicParsing="false" text="Salir" />
+            <Menu fx:id="idBtnClickSalir" mnemonicParsing="false" text="Salir">
+                <items>
+                    <MenuItem mnemonicParsing="false" onAction="#onBtnClickSalir" text="Salir" />
+                </items>
+            </Menu>
         </menus>
       </MenuBar>
-      <AnchorPane fx:id="idPnlJugadorInfo" layoutY="25.0" prefHeight="655.0" prefWidth="1077.0" />
-      <AnchorPane fx:id="idAnchorPaneVolcarDatos1" layoutX="10.0" layoutY="35.0" prefHeight="655.0" prefWidth="1077.0" />
-      <AnchorPane fx:id="idAnchorPaneVolcarDatos2" layoutX="10.0" layoutY="35.0" prefHeight="655.0" prefWidth="1077.0" />
-      <AnchorPane fx:id="idAnchorPaneVolcarDatos3" layoutX="-1.0" layoutY="23.0" prefHeight="667.0" prefWidth="1077.0" style="-fx-background-color: black;">
+      <AnchorPane fx:id="idPnlJugadoresIndex" layoutX="-1.0" layoutY="31.0" prefHeight="667.0" prefWidth="1077.0" style="-fx-background-color: black;">
          <children>
             <ImageView fitHeight="486.0" fitWidth="1077.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@Images/profilebrawl.png" />
+                  <Image url="@Images/bperfil.png" />
                </image>
             </ImageView>
-            <TextField layoutX="37.0" layoutY="78.0" prefHeight="25.0" prefWidth="253.0" />
-            <Label layoutX="37.0" layoutY="44.0" prefHeight="17.0" prefWidth="301.0" text="Introduzca el PlayerTag Ej: #80020R9Q8" textFill="WHITE" />
+            <TextField fx:id="txtBusquedaPlayerTag" layoutX="37.0" layoutY="83.0" prefHeight="25.0" prefWidth="253.0" />
+            <Label fx:id="brawlFont" layoutX="37.0" layoutY="42.0" prefHeight="31.0" prefWidth="550.0" text="Introduzca el PlayerTag Ej: #80020R9Q8" textFill="WHITE" />
+            <CheckBox fx:id="chkLogPlayerTag" layoutX="313.0" layoutY="85.0" mnemonicParsing="false" text="Desea ver el Log?" textFill="WHITE" />
+            <Button fx:id="brawlBox" layoutX="502.0" layoutY="84.0" mnemonicParsing="false" onAction="#onBtnClickBuscarJugadores" text="Buscar" />
+            <Label fx:id="lblNamePlayer" layoutX="581.0" layoutY="217.0" prefHeight="22.0" prefWidth="183.0" />
+            <Label layoutX="648.0" layoutY="272.0" prefHeight="21.0" prefWidth="95.0" text="Futuramente" textFill="WHITE" />
+            <Label fx:id="lblTagPlayer" layoutX="455.0" layoutY="286.0" prefHeight="17.0" prefWidth="95.0" />
+            <Label fx:id="lblTrophies" layoutX="499.0" layoutY="413.0" prefHeight="17.0" prefWidth="64.0" textFill="WHITE" />
+            <Label fx:id="lblHighestTrophies" layoutX="500.0" layoutY="465.0" prefHeight="17.0" prefWidth="64.0" />
+            <Label fx:id="lbl3vs3Victories" layoutX="847.0" layoutY="359.0" prefHeight="17.0" prefWidth="85.0" />
+            <Label fx:id="lblSoloVictories" layoutX="847.0" layoutY="412.0" prefHeight="17.0" prefWidth="85.0" />
+            <Label fx:id="lblDuoVictories" layoutX="847.0" layoutY="465.0" prefHeight="17.0" prefWidth="76.0" />
+            <Label fx:id="lblClubName" layoutX="648.0" layoutY="525.0" prefHeight="17.0" prefWidth="183.0" textFill="WHITE" />
+            <Label fx:id="lblTagClub" layoutX="648.0" layoutY="542.0" prefHeight="17.0" prefWidth="167.0" />
+            <Label layoutX="648.0" layoutY="414.0" prefHeight="17.0" prefWidth="95.0" text="Futuramente" textFill="WHITE" />
+            <Label layoutX="656.0" layoutY="465.0" prefHeight="17.0" prefWidth="95.0" text="Futuramente" textFill="WHITE" />
          </children>
       </AnchorPane>
+      <AnchorPane fx:id="idPnlClubsInfo" disable="true" layoutY="25.0" prefHeight="655.0" prefWidth="1077.0" />
+      <AnchorPane fx:id="idPnlBrawlersInfo" disable="true" layoutX="10.0" layoutY="35.0" prefHeight="655.0" prefWidth="1077.0" />
+      <AnchorPane fx:id="idPnlEventosInfo" disable="true" layoutX="10.0" layoutY="35.0" prefHeight="655.0" prefWidth="1077.0" />
    </children>
 </AnchorPane>

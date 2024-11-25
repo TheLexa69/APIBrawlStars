@@ -1,0 +1,49 @@
+/* styles.css */
+@font-face {
+    font-family: 'Nougat';
+    src: url('Fonts/Nougat-ExtraBlack.ttf') format('truetype');
+}
+
+.root {
+    -fx-font-family: 'Nougat';
+    -fx-font-size: 15px;
+    -fx-padding: 10px;
+}
+
+#brawlFont {
+    -fx-font-size: 28px;
+    -fx-text-fill: white;
+}
+
+#brawlBox {
+    -fx-background-color: #ffcc00;
+    -fx-min-width: 50px;
+    -fx-min-height: 25px;
+    -fx-border-color: #000;
+    -fx-border-width: 2px;
+    -fx-rotate: -10deg;
+    -fx-alignment: center;
+    -fx-text-fill: #000;
+    -fx-font-family: 'Nougat';
+    -fx-font-size: 20px;
+    -fx-text-alignment: center;
+}
+
+#lblTagPlayer{
+    -fx-text-fill: #9ACDFF;
+    -fx-effect: dropshadow(gaussian, black, 3, 0.5, 0, 0);
+}
+
+#lblTrophies, #lblHighestTrophies, #lbl3vs3Victories, #lblSoloVictories, #lblDuoVictories{
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, black, 3, 0.5, 0, 0);
+
+}
+
+#lblNamePlayer {
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, black, 3, 0.5, 0, 0);
+    -fx-font-size: 20px;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+}

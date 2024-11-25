@@ -93,15 +93,15 @@ CREATE TABLE Gears
 
 CREATE TABLE Battles
 (
+    id           INT AUTO_INCREMENT PRIMARY KEY,
     battleTime   DATETIME,
     playerTag    VARCHAR(20),
     battleMode   VARCHAR(50),
     trophyChange INT,
     result       VARCHAR(20),
-    duration     INT,
-    PRIMARY KEY (battleTime, playerTag)
+    duration     INT
 );
-DROP TABLE Users;
+DROP TABLE IF EXISTS Users;
 CREATE TABLE Users
 (
     id                INT AUTO_INCREMENT PRIMARY KEY,                                             -- Identificador único para cada usuario
@@ -131,12 +131,19 @@ alter table Players
     add FOREIGN KEY (clubTag) REFERENCES Clubs (tag);
 alter table ClubMembers
     add FOREIGN KEY (clubTag) REFERENCES Clubs (tag);
-alter table Battles
-    add FOREIGN KEY (playerTag) REFERENCES Players (tag);
+/*alter table Battles
+    add FOREIGN KEY (playerTag) REFERENCES Players (tag);*/
 alter table Brawlers
     add FOREIGN KEY (playerTag) REFERENCES Players (tag);
 alter table Gears
     add FOREIGN KEY (playerTag) REFERENCES Players (tag);
+
+ALTER TABLE Brawlers
+    ADD CONSTRAINT fk_player
+        FOREIGN KEY (playerTag)
+            REFERENCES Players(tag)
+            ON DELETE CASCADE;
+
 
 INSERT INTO Players (
     tag,
