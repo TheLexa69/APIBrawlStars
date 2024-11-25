@@ -1,12 +1,15 @@
 package com.example.apibrawlstars.Model;
 
 import com.example.apibrawlstars.Controller.ControllerCredentials;
+import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class SQLCommands {
@@ -87,23 +90,7 @@ public class SQLCommands {
         }
         return false; // Usuario no encontrado o contraseña incorrecta
     }
-    public void insertUser() {
-        // Crear un objeto Scanner para leer la entrada del usuario
-        Scanner scanner = new Scanner(System.in);
-
-        // Solicitar los datos al usuario
-        System.out.print("Ingrese el nombre del usuario: ");
-        String name = scanner.nextLine();  // Leer el nombre
-
-        System.out.print("Ingrese la contraseña del usuario: ");
-        String password = scanner.nextLine();  // Leer la contraseña
-
-        System.out.print("Ingrese el rol del usuario (por ejemplo, 'admin' o 'user'): ");
-        String role = scanner.nextLine();  // Leer el rol
-
-        // Crear un objeto User con los datos ingresados
-        User user = new User(name, password, role);
-
+    public void insertUser(User user) {
 
         // Consulta SQL para insertar un nuevo usuario
         String query = "INSERT INTO Users (name, password, role) VALUES (?, ?, ?)";
@@ -129,18 +116,9 @@ public class SQLCommands {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            scanner.close();  // Cerrar el scanner
         }
     }
-    public void deleteUserByName() {
-        // Usar Scanner para leer el nombre del usuario desde la consola
-        Scanner scanner = new Scanner(System.in);
-
-        // Solicitar al usuario que ingrese el nombre
-        System.out.print("Ingresa el nombre del usuario a eliminar: ");
-        String username = scanner.nextLine();  // Leer nombre del usuario
-
+    public void deleteUserByName(String username) {
         // Consulta SQL para eliminar al usuario basado en su nombre
         String query = "DELETE FROM Users WHERE name = ?";
 
@@ -162,14 +140,13 @@ public class SQLCommands {
 
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            // Cerrar el scanner después de usarlo
-            scanner.close();
         }
     }
-    public void getUsers() {
+
+    public  ObservableList<User> getUsers() {
+        ObservableList<User> users = null;
         // Consulta SQL para obtener name y password
-        String query = "SELECT name, password FROM Users";
+        String query = "SELECT name, password , rol  FROM Users";
 
         try (Connection conn = conexion.conectarMySQL();
              PreparedStatement stmt = conn.prepareStatement(query);
@@ -179,13 +156,14 @@ public class SQLCommands {
             while (rs.next()) {
                 String name = rs.getString("name");
                 String password = rs.getString("password");
-
-                // Aquí puedes hacer lo que necesites con los datos, por ejemplo, imprimirlos
-                System.out.println("Name: " + name + ", Password: " + password);
+                String rol = rs.getString("rol");
+                users.add(new User(name, password, rol));
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return users;
     }
+
 }

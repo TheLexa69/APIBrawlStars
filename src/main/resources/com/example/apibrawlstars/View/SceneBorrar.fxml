@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #0022E6;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.apibrawlstars.Controller.ControllerBorrar">
+   <children>
+      <Label fx:id="lblNameDelete" layoutX="48.0" layoutY="100.0" prefHeight="17.0" prefWidth="44.0" style="-fx-background-color: white;" text="Name" />
+      <TextField fx:id="txtName" layoutX="113.0" layoutY="96.0" prefHeight="25.0" prefWidth="397.0" />
+      <Button fx:id="btnBorrar" layoutX="243.0" layoutY="188.0" mnemonicParsing="false" onAction="#onBtnBorrar" prefHeight="25.0" prefWidth="115.0" text="Borrar" />
+   </children>
+</AnchorPane>

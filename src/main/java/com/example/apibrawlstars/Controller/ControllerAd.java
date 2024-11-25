@@ -1,8 +1,13 @@
 package com.example.apibrawlstars.Controller;
 
 
+import com.example.apibrawlstars.Main;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -10,6 +15,10 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.collections.ObservableList;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class ControllerAd {
 
@@ -70,6 +79,9 @@ public class ControllerAd {
     @FXML
     private TextField txtNombre;
 
+    private ObservableList<String> listaUsuarios = FXCollections.observableArrayList();
+
+
     @FXML
     void onBtnCancelar(ActionEvent event) {
 
@@ -77,6 +89,17 @@ public class ControllerAd {
 
     @FXML
     void onBtnClickBorrarUsuario(ActionEvent event) {
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/apibrawlstars/View/SceneBorrar.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
@@ -106,7 +129,18 @@ public class ControllerAd {
     }
 
     @FXML
-    void onBtnNuevoUsuAdminScene(ActionEvent event) {
+    void onBtnNuevoUsuAdminScene(ActionEvent event)  {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/apibrawlstars/View/SceneNuevo.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
 
     }
 

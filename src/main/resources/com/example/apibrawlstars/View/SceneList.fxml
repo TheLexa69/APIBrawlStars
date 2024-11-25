@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.apibrawlstars.Controller.ControllerSelect">
+   <children>
+      <TableView fx:id="tblUsers" layoutX="-2.0" prefHeight="400.0" prefWidth="600.0">
+        <columns>
+          <TableColumn fx:id="cmName" prefWidth="75.0" text="Name" />
+          <TableColumn fx:id="cmPassword" prefWidth="87.0" text="Password" />
+            <TableColumn fx:id="cmRol" prefWidth="87.0" text="Rol" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
