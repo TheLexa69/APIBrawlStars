@@ -24,14 +24,14 @@ public class ControllerSelect {
     private TableView<?> tblUsers;
 
     SQLCommands cmd = new SQLCommands();
-    private ArrayList<User> listUsers = cmd.getUsers();
+   // private ArrayList<User> listUsers = cmd.getUsers();
     public void initialize() {
         cmName.setCellValueFactory(new PropertyValueFactory<>("name"));
         cmPassword.setCellValueFactory(new PropertyValueFactory<>("password"));
         cmRol.setCellValueFactory(new PropertyValueFactory<>("rol"));
 
 
-        tblUsers.setItems(cmd.getUsers());
+        // tblUsers.setItems(cmd.getUsers());
 
 
     }
