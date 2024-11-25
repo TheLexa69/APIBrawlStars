@@ -12,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -27,13 +28,34 @@ public class ControllerViewIndex {
     private Label brawlFont;
 
     @FXML
+    private Button btnMenuBar;
+
+    @FXML
+    private Button btnMenuBar1;
+
+    @FXML
     private CheckBox chkLogPlayerTag;
+
+    @FXML
+    private Label futuramente;
+
+    @FXML
+    private Label futuramente2;
+
+    @FXML
+    private Label futuramente3;
 
     @FXML
     private Menu idBrawlersIndex;
 
     @FXML
     private Menu idBtnClickSalir;
+
+    @FXML
+    private Button idBtnInfo;
+
+    @FXML
+    private Button idBtnSalir;
 
     @FXML
     private Menu idClubsIndex;
@@ -45,16 +67,7 @@ public class ControllerViewIndex {
     private Menu idJugadoresIndex;
 
     @FXML
-    private AnchorPane idPnlBrawlersInfo;
-
-    @FXML
-    private AnchorPane idPnlClubsInfo;
-
-    @FXML
-    private AnchorPane idPnlEventosInfo;
-
-    @FXML
-    private AnchorPane idPnlJugadoresIndex;
+    private ImageView imgJugadoresLayer;
 
     @FXML
     private Label lbl3vs3Victories;
@@ -84,6 +97,9 @@ public class ControllerViewIndex {
     private Label lblTrophies;
 
     @FXML
+    private MenuItem miPnlJugador;
+
+    @FXML
     private AnchorPane pnlLogin;
 
     @FXML
@@ -92,18 +108,14 @@ public class ControllerViewIndex {
     DataApi dataApi = new DataApi();
     SQLCommands sql = new SQLCommands();
 
-    @FXML
-    void onBtnClickBrawlers(ActionEvent event) {
 
-    }
-
+    /**
+     * Método que se ejecuta al hacer click en el botón "Buscar Jugadores"
+     *
+     * @param event
+     */
     @FXML
     void onBtnClickBuscarJugadores(ActionEvent event) {
-        /*idPnlJugadoresIndex.setVisible(true);
-        idClubsIndex.setVisible(false);
-        idBrawlersIndex.setVisible(false);
-        idEventosIndex.setVisible(false);*/
-
         String playerTag = txtBusquedaPlayerTag.getText();
         boolean isLogChecked = chkLogPlayerTag.isSelected();
 
@@ -187,27 +199,66 @@ public class ControllerViewIndex {
         }
     }
 
-    @FXML
-    void onBtnClickEventos(ActionEvent event) {
 
+    public void setVisibleJugadores(Boolean estado) {
+
+        imgJugadoresLayer.setVisible(estado);
+        txtBusquedaPlayerTag.setVisible(estado);
+        brawlFont.setVisible(estado);
+        chkLogPlayerTag.setVisible(estado);
+        brawlBox.setVisible(estado);
+        lblNamePlayer.setVisible(estado);
+        lblTagPlayer.setVisible(estado);
+        lblTrophies.setVisible(estado);
+        lblHighestTrophies.setVisible(estado);
+        lbl3vs3Victories.setVisible(estado);
+        lblSoloVictories.setVisible(estado);
+        lblDuoVictories.setVisible(estado);
+        lblClubName.setVisible(estado);
+        lblTagClub.setVisible(estado);
+
+        futuramente.setVisible(estado);
+        futuramente2.setVisible(estado);
+        futuramente3.setVisible(estado);
     }
 
-    @FXML
-    void onBtnClickClubs(ActionEvent event) {
-        idPnlJugadoresIndex.setVisible(false);
-        idBrawlersIndex.setVisible(false);
-        idClubsIndex.setVisible(true);
-        idEventosIndex.setVisible(false);
-    }
 
     @FXML
     void onBtnClickJugadores(ActionEvent event) {
         //AQUI SE ENSEÑA EL PANEL DE JUGADORES
-        idPnlJugadoresIndex.setVisible(true);
-        idBrawlersIndex.setVisible(false);
-        idClubsIndex.setVisible(false);
-        idEventosIndex.setVisible(false);
+        setVisibleJugadores(true);
+        /*idPnlClubsInfo.setVisible(false);
+        idPnlBrawlersInfo.setVisible(false);
+        idPnlEventosInfo.setVisible(false);*/
+    }
 
+    @FXML
+    void onBtnClickClubs(ActionEvent event) {
+        setVisibleJugadores(false);
+//        idPnlClubsInfo.setVisible(true);
+//        idPnlBrawlersInfo.setVisible(false);
+//        idPnlEventosInfo.setVisible(false);
+    }
+
+    @FXML
+    void onBtnClickBrawlers(ActionEvent event) {
+        setVisibleJugadores(false);
+//        idPnlClubsInfo.setVisible(false);
+//        idPnlBrawlersInfo.setVisible(true);
+//        idPnlEventosInfo.setVisible(false);
+    }
+
+    @FXML
+    void onBtnClickEventos(ActionEvent event) {
+        setVisibleJugadores(false);
+//        idPnlClubsInfo.setVisible(false);
+//        idPnlBrawlersInfo.setVisible(false);
+//        idPnlEventosInfo.setVisible(true);
+    }
+
+    @FXML
+    void onBtnClickMIPnlJugador(ActionEvent event) {
+        System.out.println("onBtnClickMIPnlJugador");
     }
 
     @FXML
@@ -226,6 +277,7 @@ public class ControllerViewIndex {
     public void initialize() {
         // TODO
         System.out.println("Inicializando...");
+        setVisibleJugadores(true);
     }
 
     public void hide() {
